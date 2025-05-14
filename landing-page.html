@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ÉcoRénov - Votre expert en rénovation énergétique</title>
+    <style>
+      :root {
+        --primary: #2e8b57;
+        --secondary: #1c5d3a;
+        --accent: #ff8c00;
+        --light: #f5f5f5;
+        --dark: #333333;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--light);
+        color: var(--dark);
+        line-height: 1.6;
+      }
+
+      header {
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--primary);
+      }
+
+      .logo span {
+        color: var(--accent);
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 30px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--dark);
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--primary);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s;
+      }
+
+      .btn:hover {
+        background-color: var(--secondary);
+      }
+
+      .btn-secondary {
+        background-color: var(--accent);
+      }
+
+      .btn-secondary:hover {
+        background-color: #e67e00;
+      }
+
+      .hero {
+        padding: 160px 0 100px;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("/api/placeholder/1200/600") center/cover;
+        color: white;
+      }
+
+      .hero-content {
+        max-width: 650px;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+
+      .hero p {
+        font-size: 18px;
+        margin-bottom: 30px;
+      }
+
+      .features {
+        padding: 80px 0;
+        background-color: white;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .section-title h2 {
+        font-size: 36px;
+        color: var(--primary);
+        margin-bottom: 15px;
+      }
+
+      .section-title p {
+        color: #777;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .feature-card {
+        background-color: var(--light);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .feature-icon {
+        font-size: 40px;
+        color: var(--primary);
+        margin-bottom: 20px;
+      }
+
+      .feature-card h3 {
+        font-size: 22px;
+        margin-bottom: 15px;
+      }
+
+      .cta {
+        padding: 80px 0;
+        background-color: var(--primary);
+        color: white;
+        text-align: center;
+      }
+
+      .cta h2 {
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+
+      .cta p {
+        font-size: 18px;
+        max-width: 700px;
+        margin: 0 auto 30px;
+      }
+
+      .calculator {
+        padding: 80px 0;
+        background-color: var(--light);
+      }
+
+      .calculator-form {
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      .testimonials {
+        padding: 80px 0;
+        background-color: white;
+      }
+
+      .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .testimonial-card {
+        background-color: var(--light);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        margin-bottom: 20px;
+      }
+
+      .testimonial-author {
+        font-weight: 600;
+      }
+
+      .contact {
+        padding: 80px 0;
+        background-color: var(--light);
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .contact-info,
+      .contact-form {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .contact-info h3,
+      .contact-form h3 {
+        margin-bottom: 20px;
+        color: var(--primary);
+      }
+
+      .contact-item {
+        display: flex;
+        margin-bottom: 15px;
+      }
+
+      .contact-icon {
+        margin-right: 15px;
+        color: var(--primary);
+      }
+
+      .contact-form form {
+        display: grid;
+        gap: 20px;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      .contact-form textarea {
+        height: 120px;
+      }
+
+      footer {
+        background-color: var(--dark);
+        color: white;
+        padding: 50px 0 20px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .footer-col h3 {
+        margin-bottom: 20px;
+        color: var(--accent);
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: white;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+      }
+
+      .social-links a {
+        color: #ccc;
+        font-size: 20px;
+        transition: color 0.3s;
+      }
+
+      .social-links a:hover {
+        color: white;
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid #444;
+        color: #999;
+      }
+
+      @media (max-width: 768px) {
+        .navbar {
+          flex-direction: column;
+          align-items: start;
+        }
+
+        .nav-links {
+          margin-top: 20px;
+          flex-direction: column;
+        }
+
+        .nav-links li {
+          margin: 10px 0;
+        }
+
+        .hero h1 {
+          font-size: 36px;
+        }
+
+        .hero p {
+          font-size: 16px;
+        }
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <div class="logo">Éco<span>Rénov</span></div>
+          <ul class="nav-links">
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#services">Nos services</a></li>
+            <li><a href="#calculateur">Simulateur d'aides</a></li>
+            <li><a href="#temoignages">Témoignages</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      id="accueil"
+      class="hero"
+      style="
+        background-image: url('/Users/corentin/Library/CloudStorage/OneDrive-Personnel/Documents/MY_COMPANY/Micro/PROJETS/DESTOUCHES/Images/background.png');
+      "
+    >
+      <div class="container">
+        <div class="hero-content">
+          <h1>Rénovation énergétique par de vrais experts</h1>
+          <p>
+            Économisez sur vos factures d'énergie et valorisez votre patrimoine
+            grâce à nos solutions de rénovation énergétique sur mesure. Nous
+            réalisons tous les travaux avec notre propre expertise, sans
+            sous-traitance.
+          </p>
+          <a href="#contact" class="btn">Demander un devis gratuit</a>
+          <a
+            href="#calculateur"
+            class="btn btn-secondary"
+            style="margin-left: 15px"
+            >Simuler vos aides</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="services" class="features">
+      <div class="container">
+        <div class="section-title">
+          <h2>Nos solutions pour votre confort et vos économies</h2>
+          <p>
+            Découvrez notre savoir-faire et nos services de rénovation
+            énergétique pour améliorer la performance de votre habitat.
+          </p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-solar-panel"></i>
+            </div>
+            <h3>Isolation thermique</h3>
+            <p>
+              Isolation des combles, murs, sols et fenêtres pour réduire
+              significativement vos pertes de chaleur et améliorer votre
+              confort.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-temperature-low"></i>
+            </div>
+            <h3>Chauffage performant</h3>
+            <p>
+              Installation de systèmes de chauffage économes: pompes à chaleur,
+              chaudières à condensation, poêles à bois et granulés.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-sun"></i>
+            </div>
+            <h3>Énergies renouvelables</h3>
+            <p>
+              Production d'énergie propre avec nos solutions photovoltaïques et
+              thermiques adaptées à votre habitation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+      <div class="container">
+        <h2>Pourquoi choisir ÉcoRénov ?</h2>
+        <p>
+          Nous réalisons tous vos travaux avec notre propre équipe d'experts.
+          Pas de sous-traitance, une qualité contrôlée et un accompagnement
+          personnalisé pour toutes vos démarches d'aides financières.
+        </p>
+        <div style="display: flex; justify-content: center; margin-top: 30px">
+          <div style="text-align: center; margin: 0 20px">
+            <i
+              class="fas fa-tools"
+              style="font-size: 40px; color: white; margin-bottom: 15px"
+            ></i>
+            <h3>Savoir-faire direct</h3>
+            <p>Nos propres équipes qualifiées, pas de sous-traitance</p>
+          </div>
+          <div style="text-align: center; margin: 0 20px">
+            <i
+              class="fas fa-shield-alt"
+              style="font-size: 40px; color: white; margin-bottom: 15px"
+            ></i>
+            <h3>Garantie décennale</h3>
+            <p>Votre projet sécurisé par notre garantie professionnelle</p>
+          </div>
+          <div style="text-align: center; margin: 0 20px">
+            <i
+              class="fas fa-hand-holding-usd"
+              style="font-size: 40px; color: white; margin-bottom: 15px"
+            ></i>
+            <h3>Aides financières</h3>
+            <p>Accompagnement complet pour maximiser vos subventions</p>
+          </div>
+        </div>
+        <a href="#contact" class="btn btn-secondary" style="margin-top: 30px"
+          >Contactez nos experts</a
+        >
+      </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section id="calculateur" class="calculator">
+      <div class="container">
+        <div class="section-title">
+          <h2>Simulateur d'aides financières</h2>
+          <p>
+            Estimez rapidement le montant des aides auxquelles vous avez droit
+            pour financer vos travaux de rénovation énergétique.
+          </p>
+        </div>
+        <div class="calculator-form">
+          <form>
+            <div class="form-group">
+              <label for="property-type">Type de logement</label>
+              <select id="property-type">
+                <option value="">Sélectionnez...</option>
+                <option value="house">Maison individuelle</option>
+                <option value="apartment">Appartement</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="surface">Surface habitable (m²)</label>
+              <input type="number" id="surface" placeholder="Ex: 120" />
+            </div>
+            <div class="form-group">
+              <label for="construction-year">Année de construction</label>
+              <input
+                type="number"
+                id="construction-year"
+                placeholder="Ex: 1985"
+              />
+            </div>
+            <div class="form-group">
+              <label for="heating-type">Système de chauffage actuel</label>
+              <select id="heating-type">
+                <option value="">Sélectionnez...</option>
+                <option value="electric">Électrique</option>
+                <option value="gas">Gaz</option>
+                <option value="fuel">Fioul</option>
+                <option value="wood">Bois</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="income">Revenu fiscal de référence</label>
+              <input type="number" id="income" placeholder="Ex: 35000" />
+            </div>
+            <div class="form-group">
+              <label for="household-size"
+                >Nombre de personnes dans le foyer</label
+              >
+              <input type="number" id="household-size" placeholder="Ex: 4" />
+            </div>
+            <button type="button" class="btn" style="width: 100%">
+              Calculer mes aides
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="temoignages" class="testimonials">
+      <div class="container">
+        <div class="section-title">
+          <h2>Nos clients témoignent</h2>
+          <p>
+            Découvrez ce que pensent nos clients de nos services de rénovation
+            énergétique.
+          </p>
+        </div>
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              "Nous avons fait appel à ÉcoRénov pour l'isolation de notre maison
+              et l'installation d'une pompe à chaleur. Le résultat est
+              impressionnant : nos factures de chauffage ont diminué de 65% !
+              L'équipe est professionnelle et nous a parfaitement accompagnés
+              dans nos démarches d'aides financières."
+            </div>
+            <div class="testimonial-author">- Famille Martin, Lyon</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              "Je recommande vivement ÉcoRénov pour leur expertise et leur
+              sérieux. J'apprécie particulièrement qu'ils réalisent eux-mêmes
+              tous les travaux, sans sous-traitance. La qualité est au
+              rendez-vous et le suivi est impeccable."
+            </div>
+            <div class="testimonial-author">- Pierre Dubois, Nantes</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              "Grâce à leur simulateur d'aides, j'ai pu financer 75% de mes
+              travaux de rénovation ! L'équipe d'ÉcoRénov m'a guidée pas à pas
+              dans toutes les démarches administratives. Un grand merci pour ce
+              service complet et efficace."
+            </div>
+            <div class="testimonial-author">- Sophie Laurent, Bordeaux</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contactez nos experts</h2>
+          <p>
+            Vous avez un projet de rénovation énergétique ? Nos conseillers sont
+            à votre écoute pour vous accompagner.
+          </p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>Nos coordonnées</h3>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <p>123 Avenue de l'Énergie</p>
+                <p>75000 Paris, France</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div>
+                <p>01 23 45 67 89</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <p>contact@ecorenov.fr</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div>
+                <p>Lun-Ven: 9h-18h</p>
+                <p>Sam: 9h-12h</p>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form">
+            <h3>Demande de devis gratuit</h3>
+            <form>
+              <input type="text" placeholder="Nom et prénom" required />
+              <input type="email" placeholder="Email" required />
+              <input type="tel" placeholder="Téléphone" required />
+              <input type="text" placeholder="Code postal" required />
+              <select required>
+                <option value="">Type de projet</option>
+                <option value="isolation">Isolation</option>
+                <option value="chauffage">Chauffage</option>
+                <option value="solaire">Énergie solaire</option>
+                <option value="global">Rénovation globale</option>
+              </select>
+              <textarea placeholder="Votre message"></textarea>
+              <button type="submit" class="btn">Envoyer ma demande</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <div class="logo" style="color: white; margin-bottom: 20px">
+              Éco<span>Rénov</span>
+            </div>
+            <p>
+              Votre partenaire de confiance pour la rénovation énergétique.
+              Notre engagement : vous accompagner vers un habitat plus
+              confortable et économe en énergie.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h3>Nos services</h3>
+            <ul class="footer-links">
+              <li><a href="#">Isolation thermique</a></li>
+              <li><a href="#">Chauffage performant</a></li>
+              <li><a href="#">Énergies renouvelables</a></li>
+              <li><a href="#">Ventilation</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Liens utiles</h3>
+            <ul class="footer-links">
+              <li><a href="#">À propos de nous</a></li>
+              <li><a href="#">Nos réalisations</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Mentions légales</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Suivez-nous</h3>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>
+            &copy; 2025 ÉcoRénov - Tous droits réservés | Certifications RGE,
+            Qualibat | N° SIRET : 123 456 789 00010
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Simple sticky header
+      window.addEventListener("scroll", function () {
+        const header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
